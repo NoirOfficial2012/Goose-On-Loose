@@ -1,0 +1,12 @@
+
+extends Area2D
+
+@export var bounce_force: float = 600.0
+
+func _ready():
+	body_entered.connect(_on_body_entered)
+
+func _on_body_entered(body):
+	if body is CharacterBody2D:
+		if body.velocity.y > 0:
+			body.velocity.y = -bounce_force
